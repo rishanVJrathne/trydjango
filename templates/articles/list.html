@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2> Articles </h2>
+    <ul>
+        {% for article in articles %} 
+            {% if article.title %}
+                <li> 
+                    <a href="/articles/{{article.id}}/"> {{ article.title}}</a>
+                </li>
+            {% endif %}
+        {% endfor %} 
+    </ul>
+
+{% endblock %}
