@@ -2,21 +2,27 @@
 
 
 {% block content %}
+
     {% if not created %} 
+
         <form action="." method="POST">
+            
             {% csrf_token %}
-            <div>
-                <input type="text" name="title" placeholder="Title">
-            </div>
-            <div>
-                <textarea name="content" placeholder="Content"></textarea>
-            </div>
-            <button type="submit"> Create Article</button>
+            {% for field in form %}
+                <div class="fieldWrapper row">
+                    {{ field.errors }}
+                    <div class="col-4"> {{ field.label_tag }}</div>
+                    <div class="col-6"> {{ field }} </div>
+                     
+                </div>
+            {% endfor %}
+         
+            <button type="submit" class="btn btn-success"> Create Article </button>
         </form>
     {% else %}
         <div>
             <h3> Article is created </h3>
-            <a href="/articles/{{article.id}}/"> {{ article.title}}</a>
+            <a href="/articles/{{article.id}}/"> {{ article.title}} </a>
         </div>
         
     {% endif %}
