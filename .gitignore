@@ -3,3 +3,4 @@ Scripts
 include
 pyvenv.cfg
 venv
+.env
